@@ -1,0 +1,19 @@
+jobs:
+- name: sujeet-concourse-poc-job
+  plan:
+  - task: print-hello-sujeet-task
+          # Tells Concourse which type of worker this task should run on
+    config:
+      platform: linux
+                # This is one way of telling Concourse which container image to use for a
+                # task. It can be linux/windows etc.
+      image_resource:
+        type: registry-image
+        source:
+          repository: busybox 
+                      # busy box is simple, fast container for small utilities. These are pulled from docker hub by default
+                      # The command Concourse will run inside the container
+                      # echo "Hello Sujeet From Concourse CI!"
+      run:
+        path: echo
+        args: ["Hello Sujeet From Concourse CI!!!"]
