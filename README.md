@@ -1,15 +1,20 @@
-# concourse-ci-cd
-# Concourse pipeline is a collection of jobs. Job is collection of tasks/steps.
+# Concourse CI
+  Concourse pipeline is a collection of jobs. Job is collection of tasks/steps.
   Order of jobs does not matter in pipeline, but order of tasks/ steps matters.
 
-# Setup Concourse and CI/CD pipeline steps
+# Setup Concourse and CI/CD pipeline steps:
 
-- Download the Docker compose file
+- Download and install Docker for Windows. Setup using recommended configuration.
+
+- Download the Docker compose file:
 
         `wget https://concourse-ci.org/docker-compose.yml`
+	OR  `curl -O https://concourse-ci.org/docker-compose.yml`
+	
 - Run the Docker Compose File
 
         `docker-compose up -d`
+
 - Download the fy CLI tool from the localhost:8080 (and set path parameter if require)
 
 - Give execute permission to the fly CLI
