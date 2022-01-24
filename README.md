@@ -47,3 +47,6 @@
 
 
 
+- Create artifact in one task and pass it as an input for second task. Use pipeline with file named input-output-poc.yml.
+  Deploy it and observe the output of each task.
+

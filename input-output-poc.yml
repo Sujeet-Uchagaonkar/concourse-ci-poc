@@ -1,0 +1,39 @@
+# The output created at line 12,21 will get passed as 'the-artifact' to next task at line 32
+jobs:
+- name: input-output-job
+  plan:
+  - task: input-task
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: busybox
+      outputs:
+      - name: the-artifact
+      run:
+        # This is a neat way of embedding a script into a task
+        path: sh
+        args:
+        - -cx
+        - |
+          ls -l .
+          echo "hello from input step!" > the-artifact/message
+
+
+  - task: output-task
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source: 
+          repository: busybox
+      inputs:
+      - name: the-artifact
+      run:
+        path: sh
+        args:
+        - -cx
+        - |
+          ls -l .
+          cat the-artifact/message
