@@ -1,0 +1,46 @@
+
+resources:
+- icon: github
+  name: sujeet-springboot-gradle-git
+  source:
+    uri: https://github.com/Sujeet-Uchagaonkar/springboot_features.git
+  type: git
+
+  
+
+jobs:
+- name: spring-boot-gradle-job
+  plan:
+  - get: sujeet-springboot-gradle-git
+    trigger: true
+  - config:
+      caches:
+      - path: $HOME/.m2/repository
+      - path: $HOME/.gradle/caches/
+      - path: $HOME/.gradle/wrapper/
+      container_limits: {}
+      image_resource:
+        name: ""
+        source:
+# This will download jdk-8 slim gradle type image 
+          repository: gradle
+          tag: jdk8-slim
+        type: registry-image
+      inputs:
+      - name: sujeet-springboot-gradle-git
+      platform: linux
+      run:
+        args:
+        - -c
+        - |
+          java -Xmx32m -version
+          javac -J-Xmx32m -version
+
+          cd springboot_features
+
+          gradle wrapper
+          ./gradlew build
+        path: /bin/sh
+        user: root
+    task: run-tests
+  public: true

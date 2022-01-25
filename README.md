@@ -53,7 +53,7 @@
 
 - Resources are how Concourse interacts with the outside world. Here's a short list of some things that resources can do:
 
-		You want something to run every five minutes? Time resource.
+		You want something to run every five minutes? Time resource. (Run pipeline named "time-resource-poc.yml" for same.
 
 		You want to run tests on every new commit to the main branch? Git resource.
 
@@ -66,3 +66,8 @@ Deploy it and commit something in git repository branch & this will trigger your
   
 You can find out which resources a worker has by running:
 	  `fly -t tutorial workers --details`
+	  
+
+- Explore pipe line named "manual-trigger-poc.yml" which has two subsequent jobs (one that triggers automatically & one need to trigger manually) 
+	  
+- You can run the tests for a Java application. Deploy pipeline named "java-springboot-app-poc.yml".
