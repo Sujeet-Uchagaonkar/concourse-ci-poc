@@ -1,0 +1,26 @@
+# Define a resource of type "time". This is of 30 seconds interval
+resources:
+- name: time-30sec-res
+  type: time
+  # icon is an optional field. Set icon name from following URL : https://materialdesignicons.com/
+  icon: clock-out
+  source:
+    interval: 30s
+  
+  
+
+jobs:
+- name: time-resource-poc-job
+  plan:
+  - get: time-30sec-res
+    trigger: true
+  - task: time-30sec-task
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: busybox
+      run:
+        path: echo
+        args: ["Hello! This will get printed every 30 seconds!!"]

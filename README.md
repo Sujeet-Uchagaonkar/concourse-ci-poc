@@ -50,3 +50,19 @@
 - Create artifact in one task and pass it as an input for second task. Use pipeline with file named input-output-poc.yml.
   Deploy it and observe the output of each task.
 
+
+- Resources are how Concourse interacts with the outside world. Here's a short list of some things that resources can do:
+
+		You want something to run every five minutes? Time resource.
+
+		You want to run tests on every new commit to the main branch? Git resource.
+
+		Run unit tests on new PR's? Github-PR resource.
+
+		Fetch or push the latest image of your app? Registry-image resource.
+
+Use pipeline with file named git-resource-poc.yml.
+Deploy it and commit something in git repository branch & this will trigger your pipeline.
+  
+You can find out which resources a worker has by running:
+	  `fly -t tutorial workers --details`

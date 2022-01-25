@@ -1,0 +1,29 @@
+#Define resource of type git with name "repo". It has used at line 13 & 23. SO basically this whole pipeline will have two tasks:
+# 1. "repo" task to check latest commit version of repository. 2. "gitrepo-task" which get triggered after "repo" task as an input
+resources:
+- name: repo
+  type: git
+  source:
+    uri: https://github.com/Sujeet-Uchagaonkar/springboot_features.git
+
+
+
+jobs:
+- name: gitrepo-resource-job
+  plan:
+  #Connect defined "repo" resource with your pipeline job using "get". Set "trigger" as true so it will get triggered whenever the repo resource emits a new version
+  - get: repo 
+    trigger: true
+  - task: gitrepo-task
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: busybox
+      inputs: # add the get step as an input to this task
+      - name: repo
+      run:
+        # read the file from the get step
+        path: cat
+        args: ["repo/README.md"]
