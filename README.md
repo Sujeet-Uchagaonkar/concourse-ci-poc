@@ -26,6 +26,8 @@
 - Login to the concourse
 
         `fly -t tutorial login -c http://localhost:8080 -u test -p test`
+		
+		Note : -t represents target (i.e. tutorial in above case).
 
 - Docker (composed version) only has linux worker. You can verify this by running :
 		`fly -t tutorial workers`

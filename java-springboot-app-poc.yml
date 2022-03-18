@@ -4,6 +4,7 @@ resources:
   name: sujeet-springboot-gradle-git
   source:
     uri: https://github.com/Sujeet-Uchagaonkar/springboot_features.git
+    branch: ci-dev
   type: git
 
   

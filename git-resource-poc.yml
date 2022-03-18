@@ -1,4 +1,4 @@
-#Define resource of type git with name "repo". It has used at line 13 & 23. SO basically this whole pipeline will have two tasks:
+#Define resource of type git with name "repo". It has used at line 15 & 25. SO basically this whole pipeline will have two tasks:
 # 1. "repo" task to check latest commit version of repository. 2. "gitrepo-task" which get triggered after "repo" task as an input
 resources:
 - name: repo

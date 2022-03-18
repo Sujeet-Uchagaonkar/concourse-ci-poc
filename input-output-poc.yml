@@ -18,7 +18,7 @@ jobs:
         - -cx
         - |
           ls -l .
-          echo "hello from input step!" > the-artifact/message
+          echo "Hello!! this message is from input step!" > the-artifact/msg
 
 
   - task: output-task
@@ -36,4 +36,4 @@ jobs:
         - -cx
         - |
           ls -l .
-          cat the-artifact/message
+          cat the-artifact/msg
